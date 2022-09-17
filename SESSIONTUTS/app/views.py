@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse
 
 # Create your views here.
 def setsession(request):
@@ -9,10 +9,11 @@ def setsession(request):
 
 def getsession(request):
     # name = request.session["name"]
-    name = request.session.get("name", default ="Not Set")
-    print("============GET=========")
-    print(request.session.get_session_cookie_age())
-    return render(request,'app/getsession.html',{"name":name})
+    if "name" in request.session:
+        name = request.session.get("name", default ="Not Set")
+        return render(request,'app/getsession.html',{"name":name})
+    else:
+        return HttpResponse("Your page is expired")
     
 
 def delsession(request):
