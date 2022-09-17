@@ -4,7 +4,7 @@ from django.shortcuts import render
 def setsession(request):
     # request.session.set_test_cookie()
     request.session["name"] = "Ashok Kumar"
-    # request.session.set_expiry(30)
+    request.session.set_expiry(30)
     return render(request,'app/setsession.html')
 
 def getsession(request):
