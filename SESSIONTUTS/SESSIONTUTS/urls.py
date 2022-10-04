@@ -24,5 +24,5 @@ urlpatterns = [
     path('del', views.delsession),
     path('setfbs/', views.setfbsession),
     path('getfbs/', views.getfbsession),
-    path('delfbs', views.defblsession),
+    path('delfbs/', views.delfblsession),
 ]
