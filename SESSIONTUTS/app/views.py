@@ -26,4 +26,28 @@ def delsession(request):
     # request.session.clear_expired()
     request.session.clear()
     return render(request,'app/delsession.html')
+
+
+def setfbsession(request):
+    request.session["name"] = "Ashok Kumar"
+    request.session.set_expiry(30)
+    return render(request,'app/setsession.html')
+
+def getfbsession(request):
+    if "name" in request.session:
+        name = request.session.get("name", default ="Not Set")
+        return render(request,'app/getsession.html',{"name":name})
+    else:
+        return HttpResponse("Your page is expired")
+
+
+def delfbsession(request):
+    request.session.flush()
+    request.session.clear_expired()
+    return render(request,'app/delsession.html')
+
+
+
+
+
     
